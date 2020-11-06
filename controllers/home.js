@@ -6,7 +6,7 @@ exports.getAllTopics = (_, res) => {
     var data = {};
 
     data.success = true;
-    data.topic = Topics.data_type.values;
+    data.topics = Topics.data_type.values;
 
     res.json(data);
 };
@@ -15,7 +15,7 @@ exports.getAllSubjects = (_, res) => {
     var data = {};
 
     data.success = true;
-    data.topic = Subjects.data_type.values;
+    data.subjects = Subjects.data_type.values;
 
     res.json(data);
 };
@@ -24,7 +24,7 @@ exports.getAllStandards = (_, res) => {
     var data = {};
 
     data.success = true;
-    data.topic = Standards.data_type.values;
+    data.standards = Standards.data_type.values;
 
     res.json(data);
 };

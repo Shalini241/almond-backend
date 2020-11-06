@@ -1,11 +1,13 @@
 const { DataTypes} = require("sequelize");
 
 const ENUM = {
-    MATHEMATICS: 'mathematics'
+    MATHEMATICS: 'Mathematics',
+    PHYSICS: 'Physics',
+    CHEMISTRY: 'Chemistry',
 }
 
 const data_type =  DataTypes.ENUM({
-    values: [ENUM.MATHEMATICS]
+    values: [ENUM.MATHEMATICS, ENUM.PHYSICS, ENUM.CHEMISTRY]
 })
 
 module.exports.ENUM = ENUM;
