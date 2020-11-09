@@ -1,6 +1,9 @@
 const Topics = require("../models/enums/topics");
+const { Sequelize, where} = require("sequelize");
+const sequelize = require('../config/database');
 const Subjects = require("../models/enums/subjects");
-const Standards = require("../models/enums/standard");
+const Clazzez = require("../models/enums/clazz");
+const ClassSubject = require("../models/clazz_subject");
 
 exports.getAllTopics = (_, res) => {
     var data = {};
@@ -11,20 +14,21 @@ exports.getAllTopics = (_, res) => {
     res.json(data);
 };
 
-exports.getAllSubjects = (_, res) => {
+exports.getSubjects = (_, res) => {
     var data = {};
 
     data.success = true;
     data.subjects = Subjects.data_type.values;
-
+    
     res.json(data);
+    
 };
 
 exports.getAllStandards = (_, res) => {
     var data = {};
 
     data.success = true;
-    data.standards = Standards.data_type.values;
+    data.clazzez = Clazzez.data_type.values;
 
     res.json(data);
 };

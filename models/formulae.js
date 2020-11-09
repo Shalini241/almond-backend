@@ -2,7 +2,7 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require('../config/database');
 const topics = require('./enums/topics');
 const subjects = require('./enums/subjects');
-const classes = require('./enums/standard');
+const classes = require('./enums/clazz');
 
 class Formulae extends Model {}
 Formulae.init(
@@ -29,10 +29,7 @@ Formulae.init(
     rhs: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    topic: topics.data_type,
-    subject: subjects.data_type,
-    standard: classes.data_type,
+    }
     
   },
   {
@@ -43,6 +40,8 @@ Formulae.init(
     updatedAt: "updated_at",
   }
 );
+
+Formulae.belongsTo(topics.model);
 
 module.exports = Formulae;
   

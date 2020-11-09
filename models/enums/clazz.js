@@ -2,17 +2,16 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require('../../config/database');
 
 const ENUM = {
-    MATHEMATICS: 'Mathematics',
-    PHYSICS: 'Physics',
-    CHEMISTRY: 'Chemistry',
+    ELEVENTH: 'XI',
+    TWELFTH: 'XII'
 }
 
 const data_type =  DataTypes.ENUM({
-    values: [ENUM.MATHEMATICS, ENUM.PHYSICS, ENUM.CHEMISTRY]
+    values: [ENUM.ELEVENTH, ENUM.TWELFTH]
 })
 
-class Subject extends Model {}
-Subject.init(
+class Clazz extends Model {}
+Clazz.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -20,16 +19,17 @@ Subject.init(
       allowNull: false,
       autoIncrement: true
     },
-    subject: data_type,
+    class: data_type,
     
   },
   {
     sequelize: sequelize,
     underscored: true,
     timestamps: false,
+    tableName: 'classes'
   }
 );
 
-module.exports.model = Subject;
+module.exports.model = Clazz;
 module.exports.ENUM = ENUM;
 module.exports.data_type = data_type;
