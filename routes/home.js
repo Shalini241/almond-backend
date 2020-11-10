@@ -2,12 +2,12 @@ var express = require("express");
 var router = express.Router();
 
 const {
-    getAllTopics,
+    getTopics,
     getSubjects,
     getAllStandards,
 } = require("../controllers/home");
 
-router.get("/topics", getAllTopics);
+router.get("/topics", getTopics);
 
 router.get("/subjects", getSubjects);
 

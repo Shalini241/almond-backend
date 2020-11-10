@@ -2,13 +2,33 @@ const Topics = require("../models/enums/topics");
 const Subjects = require("../models/enums/subjects");
 const Clazzez = require("../models/enums/clazz");
 const ClassSubject = require("../models/clazz_subject");
+const { Op } = require("sequelize");
 
-exports.getAllTopics = (_, res) => {
+exports.getTopics = async (req, res) => {
     var data = {};
 
     data.success = true;
-    data.topics = Topics.data_type.values;
-
+    let classSubjectIds = await ClassSubject.findAll(
+        {
+            where: {
+                clazz_id : req.query.class,
+                subject_id : req.query.subject
+            }
+        }
+    );
+    let array = [];
+    for(var i =0;i<classSubjectIds.length;i++) {
+        array[i] = classSubjectIds[i].id;
+    }
+    
+    let topics = await Topics.model.findAll({
+        where: {
+            clazz_subject_id: {
+                [Op.in] : array
+            }
+        }
+    })
+    data.topics = topics;
     res.json(data);
 };
 
@@ -18,7 +38,7 @@ exports.getSubjects = async (req, res) => {
     data.success = true;
     
     let subjects = await ClassSubject.findAll(
-        {   attributes: [],
+        {   attributes: ['clazz_id'],
             include: [{model: Subjects.model}],
             where: {
                 clazz_id : req.query.class
