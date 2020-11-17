@@ -20,7 +20,7 @@ app.use(favicon(__dirname + "/static/images/logo.png"));
 app.use("/static", express.static(path.join(__dirname, "static")));
 
 //routes
-app.use("/allformulae", formulaeRoute);
+app.use("/formulae", formulaeRoute);
 app.use("/home", homeRoute);
 
 app.listen(3000);
