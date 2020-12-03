@@ -7,6 +7,7 @@ dotenv.config();
 
 var formulaeRoute = require("./routes/formulae");
 var homeRoute = require("./routes/home");
+var userRoute = require('./routes/user');
 
 var app = express();
 app.use(body_parser.json());
@@ -22,6 +23,7 @@ app.use("/static", express.static(path.join(__dirname, "static")));
 //routes
 app.use("/formulae", formulaeRoute);
 app.use("/home", homeRoute);
+app.use("/user", userRoute);
 
 app.listen(3000);
 
