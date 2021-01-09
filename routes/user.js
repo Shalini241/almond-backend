@@ -13,4 +13,10 @@ router.post("/signin", signIn);
 
 router.post("/signout", signOut);
 
+const {
+    getUserProgress
+} = require("../controllers/progress");
+
+router.post("/progress", getUserProgress);
+
 module.exports = router;

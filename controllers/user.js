@@ -16,9 +16,17 @@ exports.signUp = async (req, res) => {
         })
       });
 
+      const userProgress = {
+        'topicCovered' : 0.8,
+        'subjectCovered': 0.7,
+        'topicLearning': 0.5,
+        'topicReviewing':0.2,
+        'tag':'LEARNING'
+    };
+
       res.json({
         success: true,
-        result: user
+        result: [user,userProgress]
       })
         
 };
